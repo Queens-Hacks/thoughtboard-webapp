@@ -1,4 +1,4 @@
-the-best-idea-display
+the-best-idea-webapp
 =====================
 
 evidently
