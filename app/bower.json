@@ -1,0 +1,21 @@
+{
+  "name": "PublicSignProject",
+  "version": "0.1.0",
+  "authors": [
+    "Riley Shaw <rileyjshaw@gmail.com>"
+  ],
+  "description": "Community driven billboard",
+  "homepage": "https://github.com/Queens-Hacks/the-best-idea-webapp",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "sign",
+    "billboard",
+    "community"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+  }
+}
