@@ -6,6 +6,7 @@ var argv = require('minimist')(process.argv.slice(2));
 var paths = {
   app: {
     scripts: {
+      entry: 'js/main.js',
       all: 'js/**/*.js'
       // bower components pulled in with usemin
     },
@@ -25,25 +26,17 @@ var paths = {
 };
 
 gulp.task('build_app', function() {
-  var debug;
-  if(argv.dev) {
-    debug: true;
-  } else {
-    debug: false;
-    process.env.NODE_ENV = 'production';
-  }
-
   return gulp.src(paths.app.scripts.entry)
     .pipe($.browserify({
       insertGlobals: false,
-      debug: debug
+      debug: argv.debug
     }))
     .pipe($.jshint())
     .pipe($.jshint.reporter('default'))
     .pipe($.rename('app.js'))
     .pipe(gulp.dest(paths.app.temp))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('usemin', function() {
@@ -58,7 +51,7 @@ gulp.task('js_concat', ['build_app', 'usemin'], function() {
     .pipe($.concat('all.js'))
     .pipe($.if(!argv.dev, $.uglify()))
     .pipe(gulp.dest(paths.dist.scripts))
-    .pipe($.size())
+    .pipe($.size());
 });
 
 gulp.task('sass', function () {
@@ -69,7 +62,7 @@ gulp.task('sass', function () {
     .pipe($.if(!argv.dev, $.minifyCss()))
     .pipe(gulp.dest(paths.dist.stylesheets))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('html', ['scripts'], function() {
@@ -77,7 +70,7 @@ gulp.task('html', ['scripts'], function() {
     .pipe($.if(!argv.dev, $.minifyHtml({empty: true})))
     .pipe(gulp.dest(paths.dist.root))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('images', [], function() {
@@ -85,7 +78,7 @@ gulp.task('images', [], function() {
     .pipe($.imagemin())
     .pipe(gulp.dest(paths.dist.images))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('svgs', [], function() {
@@ -93,7 +86,7 @@ gulp.task('svgs', [], function() {
     .pipe($.svgmin())
     .pipe(gulp.dest(paths.dist.images))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('extras', function() {
@@ -101,7 +94,7 @@ gulp.task('extras', function() {
     .pipe($.imagemin())
     .pipe(gulp.dest(paths.dist.root))
     .pipe($.size())
-    .pipe($.connect.reload())
+    .pipe($.connect.reload());
 });
 
 gulp.task('clean_temp', ['scripts', 'html', 'images', 'svgs'], function () {
