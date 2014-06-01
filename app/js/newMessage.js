@@ -4,7 +4,7 @@ var score = require('./score');
 function toggle() {
   if (!DOM.newMsg.classList.contains('show')) {
     if (score.get() < 5) {
-      console.log('Unsufficient funds');
+      console.log('Browse a few messages before submitting your own.');
     }
     else {
       DOM.newMsg.classList.toggle('show');

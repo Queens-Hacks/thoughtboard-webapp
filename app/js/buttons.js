@@ -27,3 +27,9 @@ var heartState = false;
 
 DOM.heart.addEventListener('click', heart, true);
 DOM.next.addEventListener('click', next, true);
+
+module.exports = {
+  next: next,
+  heart: heart
+}
+
