@@ -5,24 +5,23 @@
 $default-background: #EEE
 $default-text: #333
 $card-color: #FFF
+$default-font: 'Montserrat'
 
 /* Global */
 
 body
-  font: bold 3em Helvetica
   color: $default-text
   background-color: $default-background
 
 .newMessage
-  font: bold 3em Helvetica
+  font: bold 2.4em $default-font
   font-size: 2em
   font-weight: 400
   margin: 0 auto
   color: #FFF
 
-.cards
-  font-size: 2em
-  font-weight: 700
+.cardList
+  font: bold 2em $default-font
 
 /* Content */
 
@@ -33,7 +32,7 @@ body
   background-color: #666
   padding: 0.2em
 
-  button
+  span
     right: 0
 
 .cards
