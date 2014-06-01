@@ -1,3 +1,50 @@
+/* Imports */
+@import reset
+
+/* Variables */
+$default-background: #EEE
+$default-text: #333
+$card-color: #FFF
+
+/* Global */
+
+body
+  font: bold 3em Helvetica
+  color: $default-text
+  background-color: $default-background
+
+.newMessage
+  font-size: 2em
+  font-weight: 400
+  margin: 0 auto
+  color: #FFF
+
+.cards
+  font-size: 2em
+  font-weight: 700
+
+/* Content */
+
+.newMessage
+  position: absolute
+  width: 100%
+  top: 0
+  background-color: #666
+  padding: 0.2em
+
+  button
+    right: 0
+
+.cards
+  margin-top: 3em
+  .card
+    display: inline-block
+    padding: 1em
+    width: 80%
+    height: 60%
+    background-color: $card-color
+
+/* TODO: Transitions */
 .animate-like.ng-leave, .animate-dislike.ng-leave, .animate-partial
   transition: all linear 0.3s
 
@@ -20,6 +67,3 @@
 
     .ng-leave-active
       transform: translateX(100%) rotate(60deg)
-
-/* Imports */
-@import reset
