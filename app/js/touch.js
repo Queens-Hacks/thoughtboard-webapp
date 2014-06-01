@@ -10,10 +10,3 @@ var dragRight = Hammer(DOM.cardList).on("swipeleft", function(event) {
 var tapNext = Hammer(DOM.next).on("tap", function(event) {
   buttons.next();
 })
-
-function resetStates() {
-  _.map(hasTouch, function(touchItem) {
-    touchItem = false;
-  });
-  console.log("reset touch: " + hasTouch.heart);
-}
