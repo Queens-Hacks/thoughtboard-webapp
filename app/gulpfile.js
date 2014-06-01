@@ -14,16 +14,24 @@ var paths = {
     images: 'img/**/*.{gif, png, jpg}',
     svgs: 'img/**/*.svg',
     extras: ['*.{png,ico,txt,xml}', '404.html', 'CNAME'],
-    temp: 'temp'
+    temp: 'temp',
+    ext: 'ext/*'
   },
   dist: {
     // BE VERY CAREFUL CHANGING ROOT VALUE (see clean_dist task)
     root: '../dist',
     scripts: '../dist/js',
     stylesheets: '../dist/css',
-    images: '../dist/img'
+    images: '../dist/img',
+    ext: '../dist/ext'
   }
 };
+
+gulp.task('copy_ext', function() {
+  return gulp.src(paths.app.ext)
+    .pipe(gulp.dest(paths.dist.ext))
+    .pipe($.size());
+});
 
 gulp.task('build_app', function() {
   return gulp.src(paths.app.scripts.entry)
@@ -31,12 +39,16 @@ gulp.task('build_app', function() {
       insertGlobals: false,
       debug: argv.debug
     }))
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('default'))
     .pipe($.rename('app.js'))
     .pipe(gulp.dest(paths.app.temp))
     .pipe($.size())
     .pipe($.connect.reload());
+});
+
+gulp.task('lint', function() {
+  return gulp.src(paths.app.scripts.all)
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('default'))
 });
 
 gulp.task('usemin', function() {
@@ -46,7 +58,7 @@ gulp.task('usemin', function() {
     .pipe($.size());
 });
 
-gulp.task('js_concat', ['build_app', 'usemin'], function() {
+gulp.task('js_concat', ['lint', 'build_app', 'usemin'], function() {
   return gulp.src([paths.app.temp + '/js/*.js', paths.app.temp + '/*.js'])
     .pipe($.concat('all.js'))
     .pipe($.if(!argv.dev, $.uglify()))
@@ -122,8 +134,8 @@ gulp.task('connect', ['default'], $.connect.server({
     }
 }));
 
-gulp.task('scripts', ['build_app', 'usemin', 'js_concat']);
-gulp.task('default', ['scripts', 'sass', 'html', 'extras', 'images', 'svgs', 'clean_temp']);
+gulp.task('scripts', ['lint', 'build_app', 'usemin', 'js_concat']);
+gulp.task('default', ['scripts', 'sass', 'html', 'extras', 'copy_ext', 'images', 'svgs', 'clean_temp']);
 
 // These are the ones you'll want to call.
 //
