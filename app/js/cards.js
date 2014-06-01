@@ -1,6 +1,5 @@
 var DOM = require('./DOM');
 var utils = require('./utils');
-var touch = require('./touch');
 var server = require('./server');
 
 function pushCard(message, id) {
@@ -26,7 +25,6 @@ function shiftCard() {
   var activeCardsLength = activeCards.length;
   if (activeCardsLength) {
     var card = activeCards.shift(), id = card.id;
-    touch.reset();
     card.remove();
     // lazyload new cards
     if (activeCardsLength < 5) {

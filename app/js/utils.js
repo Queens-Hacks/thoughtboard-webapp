@@ -15,4 +15,4 @@ var hexList = [
 module.exports = {
   abort: abort,
   hexList: hexList
-};
+}
