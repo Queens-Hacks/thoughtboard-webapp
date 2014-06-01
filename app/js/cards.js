@@ -8,7 +8,6 @@ function pushCard(message, id) {
   var vcent = document.createElement('div');
   var p = document.createElement('p');
   var randColor = _.random(0, utils.hexList.length-1);
-  console.log(randColor);
 
   vcent.className = 'vcent';
   p.textContent = message;

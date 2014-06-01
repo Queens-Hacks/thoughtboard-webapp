@@ -25,6 +25,7 @@ body
   overflow-x: hidden
   font: bold 2.4em $default-font
   color: $default-text
+  box-sizing: border-box
   background: $default-background url(http://subtlepatterns.com/patterns/cork_1.png) repeat
 
 button
@@ -74,31 +75,33 @@ i
 
 .newForm
   position: absolute
+  z-index: 100
   width: 100%
   top: 2em
   background-color: $purple
-  padding: 0.2em
   color: #FFF
-  transition: transform 0.5s ease-in
+  transition: all 0.5s ease-in
+  transform: scale(1,0)
+  opacity: 0
   transform-origin: top
+  box-shadow: 0 10px 0px -4px rgba($purple, 0.4)
 
   &.show
     transform: scale(1,1)
-
-  &.hide
-    transform: scale(1,0)
+    opacity: 1
 
   textarea
     display: block
     width: 80%
     border: 0
-    box-sizing: border-box
     padding: 0.5em
     margin: 0.5em 10% 0 10%
+    box-sizing: border-box
+    border-radius: 0.2em
     font: normal 1em $default-font
     color: $purple
 
-  input[type=submit]
+  .submit
     width: 6em
     padding: 0.4em
     margin: 0.5em auto
@@ -176,3 +179,4 @@ i
   text-transform: uppercase
   background-color: $purple
   color: #fff
+  box-shadow: 0 6px 0px rgba($purple, 0.4)

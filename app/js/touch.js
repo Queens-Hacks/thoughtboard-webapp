@@ -10,19 +10,14 @@ var hasTouch = {
 
 var tapHeart = Hammer(DOM.heart).on("tap", function(event) {
   console.log('hearted!');
-  buttons.heart();
 })
 
-var dragRight = Hammer(DOM.cardList).on("dragright", function(event) {
-  console.log('dragged Right!');
-  if (!hasTouch.navigate) {
-    hasTouch.swipe = true;
-  }
+var dragRight = Hammer(DOM.cardList).on("dragleft", function(event) {
+  console.log('dragged!');
 })
 
 var tapNext = Hammer(DOM.next).on("tap", function(event) {
   console.log('tapped next!');
-  buttons.next()
 })
 
 function resetStates() {
