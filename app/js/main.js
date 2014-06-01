@@ -1,7 +1,6 @@
 var buttons = require('./buttons');
 var cards = require('./cards');
 var DOM = require('./DOM');
-var geo = require('./geo');
 var score = require('./score');
 var server = require('./server');
 var touch = require('./touch');
