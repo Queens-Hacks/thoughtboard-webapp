@@ -13,15 +13,15 @@ body
   color: $default-text
   background-color: $default-background
 
-.newMessage
+.newMessage,
+.score
   font: bold 2.4em $default-font
   font-size: 2em
   font-weight: 400
   margin: 0 auto
-  color: #FFF
 
 .cardList
-  font: bold 2em $default-font
+  font: bold 1em $default-font
 
 /* Content */
 
@@ -31,18 +31,23 @@ body
   top: 0
   background-color: #666
   padding: 0.2em
+  color: #FFF
 
   span
     right: 0
 
-.cards
-  margin-top: 3em
+.cardList
+  margin-top: 4em
   .card
     display: inline-block
     padding: 1em
     width: 80%
     height: 60%
     background-color: $card-color
+
+.score
+  position: absolute
+  bottom: 0
 
 /* TODO: Transitions */
 .animate-like.ng-leave, .animate-dislike.ng-leave, .animate-partial
