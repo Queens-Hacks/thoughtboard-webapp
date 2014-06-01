@@ -20,3 +20,16 @@
 
     .ng-leave-active
       transform: translateX(100%) rotate(60deg)
+
+.cardList
+  li
+    opacity: 1
+    transition: opacity .4s
+
+    &.leave
+      opacity: 0
+
+.heart
+  .active
+    height: 100px
+    width: 100px
