@@ -1,4 +1,5 @@
 var DOM = require('./DOM');
+var server = require('./server');
 
 function pushCard(message, id) {
   var cardList = DOM.cardList;
@@ -28,24 +29,14 @@ function shiftCard() {
   }
 }
 
-function populate(amount) {
-  // get <amount> cards from the server. Dummy var:
-  var cards = [
-                ['Hello I am won', 1],
-                ['Hello I am too', 2],
-                ['Hello I am tree', 3],
-                ['Hello I am for', 4],
-                ['Hello I am fooglyive', 5],
-                ['Hello I am sex', 6],
-                ['Hello I am saven', 7],
-                ['Hello I am ate', 8],
-                ['Hello I am nein', 9],
-                ['Hello I am then', 10]
-  ];
-
-  cards.forEach(function(args) {
+function popCallback(response) {
+  response.content.forEach(function(args) {
     pushCard(args[0], args[1]);
   });
+}
+
+function populate(amount) {
+  server.getCards(amount, popCallback);
 }
 
 function remove(e) {

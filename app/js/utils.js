@@ -1,9 +1,9 @@
 function abort(message) {
   if (!message) {
-    message = "Omg abort"
+    message = "Omg abort";
   }
   alert(message);
-};
+}
 
 module.exports = {
   abort: abort
