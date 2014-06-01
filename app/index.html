@@ -8,12 +8,12 @@
   </head>
   <body>
 
-    <section class='newMessage'>
+    <div class='newMessage'>
       Add new Message
       <span class='add'>
         <i class="plus fa fa-plus-circle fa-1x"></i>
       </span>
-    </section>
+    </div>
 
     <ul class="cardList"></ul>
 
@@ -22,11 +22,10 @@
 
     <span class="score"></span>
 
-    <section class='newForm'>
-      <textarea name='newPost' placeholder='Say something!'>
-      </textarea>
+    <form class='newForm'>
+      <textarea name='newPost' placeholder='Say something!'></textarea>
       <button class='submit'>Submit</button>
-    </section>
+    </form>
 
     <!-- build:js js/all.js -->
     <script src="bower_components/hammerjs/hammer.min.js"></script>
