@@ -5,9 +5,13 @@ function isSupported() {
 }
 
 function addPoints(points) {
-  var newScore = localStorage['score'] + points;
+  var newScore = parseInt(localStorage['score']) + points;
   localStorage['score'] = newScore;
   DOM.score.textContent = newScore;
+}
+
+function get() {
+  return localStorage['score'];
 }
 
 if (!localStorage['score']) {
@@ -16,5 +20,6 @@ if (!localStorage['score']) {
 
 module.exports = {
   isSupported: isSupported,
-  addPoints: addPoints
+  addPoints: addPoints,
+  get: get
 };
