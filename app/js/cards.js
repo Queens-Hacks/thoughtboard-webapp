@@ -7,7 +7,7 @@ function pushCard(message, id) {
   var li = document.createElement('li');
   var vcent = document.createElement('div');
   var p = document.createElement('p');
-  var randColor = _.random(0, utils.hexList.length-1);
+  var randColor = _.random(0, utils.hexList.length - 1);
 
   vcent.className = 'vcent';
   p.textContent = message;
@@ -23,24 +23,16 @@ function pushCard(message, id) {
 function shiftCard() {
   var activeCardsLength = activeCards.length;
   if (activeCardsLength) {
-    var card = activeCards.shift(), id = card.id;
+    var card = activeCards.shift(), length = activeCards.length;
     card.remove();
-    // lazyload new cards
-    if (activeCardsLength < 5) {
-      populate(10);
-    }
-    return id;
+    return length;
   }
 }
 
-function popCallback(response) {
-  response.content.forEach(function(args) {
-    pushCard(args[0], args[1]);
+function populate(response) {
+  response.content.forEach(function(card) {
+    pushCard(card.message, card.id);
   });
-}
-
-function populate(amount) {
-  server.getCards(amount, popCallback);
 }
 
 function remove(e) {
@@ -48,6 +40,10 @@ function remove(e) {
   if (!e || e.propertyName == 'transform' && e.target === el) {
     el.parentNode.removeChild(el);
   }
+}
+
+function currentId() {
+  return activeCards[0].id;
 }
 
 function Card(el, id) {
@@ -69,5 +65,6 @@ Card.prototype.remove = function() {
 
 module.exports = {
   populate: populate,
-  shift: shiftCard
+  shift: shiftCard,
+  currentId: currentId
 };
