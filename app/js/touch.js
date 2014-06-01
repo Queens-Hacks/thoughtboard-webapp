@@ -6,9 +6,9 @@ function init() {
     buttons.next();
   });
 
-  Hammer(DOM.next).on("tap", function(event) {
-    buttons.next();
-  });
+//  Hammer(DOM.next).on("tap", function(event) {
+//    buttons.next();
+//  });
 }
 
 module.exports = {
