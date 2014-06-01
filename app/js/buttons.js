@@ -35,7 +35,6 @@ function toggleTop() {
 
 function submit(e) {
   var textarea;
-  e.preventDefault();
 
   if (score.get() >= 5) {
     textarea = DOM.newForm.newPost;
