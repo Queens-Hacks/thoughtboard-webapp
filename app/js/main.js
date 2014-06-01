@@ -1,5 +1,4 @@
 var buttons = require('./buttons');
-var cards = require('./cards');
 var DOM = require('./DOM');
 var score = require('./score');
 var server = require('./server');
@@ -15,5 +14,7 @@ if (!score.isSupported) {
 }
 
 server.init();
+buttons.init();
+touch.init();
 
 // alert('Welcome! Once you\'ve looked through a few submissions you can submit a thought of your own.');

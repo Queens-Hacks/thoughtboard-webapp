@@ -44,14 +44,16 @@ function submit(e) {
   }
 }
 
-var heartState = false;
+function init() {
+  DOM.heart.addEventListener('click', heart, true);
+  DOM.next.addEventListener('click', next, true);
+  DOM.topBar.addEventListener('click', toggleTop, true);
+  DOM.newForm.addEventListener('submit', submit, true);
+}
 
-DOM.heart.addEventListener('click', heart, true);
-DOM.next.addEventListener('click', next, true);
-DOM.topBar.addEventListener('click', toggleTop, true);
-DOM.newForm.addEventListener('submit', submit, true);
+var heartState = false;
 
 module.exports = {
   next: next,
-  heart: heart
-}
+  init: init
+};
