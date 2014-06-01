@@ -1,13 +1,19 @@
 var DOM = require('./DOM');
 var cards = require('./cards');
 var score = require('./score');
+var server = require('./server');
 
 function next() {
-  var cardId = cards.shift();
+  var cardId = cards.currentId();
+  var length = cards.shift();
   if (heartState) {
-//    server.send('upvote', userId, cardId);
+    server.upvote(cardId);
     DOM.heart.classList.remove('active');
     heartState = false;
+  }
+  // lazyload new cards
+  if (length < 5) {
+    server.getCards(10, cards.populate);
   }
   score.addPoints(1);
 }

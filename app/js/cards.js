@@ -1,14 +1,13 @@
 var DOM = require('./DOM');
-var utils = require('./utils');
 var touch = require('./touch');
+var utils = require('./utils');
 
 function pushCard(message, id) {
   var cardList = DOM.cardList;
   var li = document.createElement('li');
   var vcent = document.createElement('div');
   var p = document.createElement('p');
-  var randColor = _.random(0, utils.hexList.length-1);
-  console.log(randColor);
+  var randColor = _.random(0, utils.hexList.length - 1);
 
   vcent.className = 'vcent';
   p.textContent = message;
@@ -24,20 +23,16 @@ function pushCard(message, id) {
 function shiftCard() {
   var activeCardsLength = activeCards.length;
   if (activeCardsLength) {
-    var card = activeCards.shift(), id = card.id;
+    var card = activeCards.shift(), length = activeCards.length;
     touch.reset();
     card.remove();
-    // lazyload new cards
-    if (activeCardsLength < 5) {
-      populate(10);
-    }
-    return id;
+    return length;
   }
 }
 
 function populate(response) {
-  response.content.forEach(function(args) {
-    pushCard(args[0], args[1]);
+  response.content.forEach(function(card) {
+    pushCard(card.message, card.id);
   });
 }
 
@@ -46,6 +41,10 @@ function remove(e) {
   if (!e || e.propertyName == 'transform' && e.target === el) {
     el.parentNode.removeChild(el);
   }
+}
+
+function currentId() {
+  return activeCards[0].id;
 }
 
 function Card(el, id) {
@@ -67,5 +66,6 @@ Card.prototype.remove = function() {
 
 module.exports = {
   populate: populate,
-  shift: shiftCard
+  shift: shiftCard,
+  currentId: currentId
 };
