@@ -1,7 +1,6 @@
 var DOM = require('./DOM');
 var utils = require('./utils');
 var touch = require('./touch');
-var server = require('./server');
 
 function pushCard(message, id) {
   var cardList = DOM.cardList;
@@ -36,14 +35,10 @@ function shiftCard() {
   }
 }
 
-function popCallback(response) {
+function populate(response) {
   response.content.forEach(function(args) {
     pushCard(args[0], args[1]);
   });
-}
-
-function populate(amount) {
-  server.getCards(amount, popCallback);
 }
 
 function remove(e) {

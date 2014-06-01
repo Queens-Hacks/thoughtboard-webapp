@@ -1,13 +1,16 @@
-function getRequest(url, callback) {
-  if (typeof callback !== 'function') return false;
+var cards = require('./cards');
+
+function getRequest(url, fn) {
+  if (typeof fn !== 'function') return false;
 
   request = new XMLHttpRequest();
   request.open('GET', url, true);
 
   request.onload = function() {
+    console.dir(request);
     var status = request.status;
     if (status >= 200 && status < 400){
-      callback(JSON.parse(request.responseText));
+      fn(JSON.parse(request.responseText));
     } else {
       throw new Error('Request to server resulted in error code ' + status);
     }
@@ -30,26 +33,30 @@ function getId(hash, fn) {
 }
 
 function getCards(amount, fn) {
-  return getRequest(baseUrl + 'cards?' + uid + '&amount=' + amount, fn);
+  getRequest(baseUrl + 'cards?' + uid + '&amount=' + amount, fn);
 }
 
 function upvote(cardId) {
   var postRequest = new XMLHttpRequest();
-  postRequest.open('POST', baseUrl + 'upvote?userId=' + userId + '&cardId=' + cardId, true);
+  postRequest.open('POST', baseUrl + 'upvote?' + uid + '&cardId=' + cardId, true);
   postRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   postRequest.send(cardId);
+}
+
+function init() {
+  getId(window.location.hash.slice(1), function(id) {
+    localStorage['userId'] = id;
+    userId = id;
+    uid = 'userId=' + userId;
+    // initial list population
+    getCards(10, cards.populate);
+  });
 }
 
 var baseUrl = 'http://qbattlehack.herokuapp.com/webapp/';
 var userId, uid;
 
-getId(window.location.hash, function(id) {
-  localStorage['userId'] = id;
-  userId = id;
-  uid = 'userId=' + userId;
-});
-
 module.exports = {
-  getCards: getCards,
+  init: init,
   upvote: upvote
 };
