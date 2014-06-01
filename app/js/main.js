@@ -2,6 +2,7 @@ var buttons = require('./buttons');
 var cards = require('./cards');
 var DOM = require('./DOM');
 var geo = require('./geo');
+var newMsg = require('./newMessage');
 var score = require('./score');
 var touch = require('./touch');
 var utils = require('./utils');

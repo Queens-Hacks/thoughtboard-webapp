@@ -8,13 +8,6 @@
   </head>
   <body>
 
-    <section class='newForm'>
-      <textarea name='newPost'>
-      This is where the user can enter text...
-      </textarea>
-      <input type='submit' />
-    </section>
-
     <section class='newMessage'>
       Add new Message
       <span class='add'>
@@ -28,6 +21,12 @@
     <button class="heart"><i class="fa fa-heart fa-4x"></i></button>
 
     <span class="score"></span>
+
+    <section class='newForm hide'>
+      <textarea name='newPost' placeholder='Say something!'>
+      </textarea>
+      <input type='submit' />
+    </section>
 
     <!-- build:js js/all.js -->
     <script src="bower_components/hammerjs/hammer.min.js"></script>
