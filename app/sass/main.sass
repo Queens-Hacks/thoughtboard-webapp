@@ -1,0 +1,22 @@
+.animate-like.ng-leave, .animate-dislike.ng-leave, .animate-partial
+  transition: all linear 0.3s
+
+.animate-partial
+  .animate-like-partial
+    transform: translateX(10%) rotate(5deg)
+
+  .animate-dislike-partial
+    transform: translateX(-10%) rotate(-5deg)
+
+.animate-like
+  .ng-leave
+    transform: translateX(0px) rotate(0deg)
+    .ng-leave-active
+      transform: translateX(100%) rotate(60deg)
+
+.animate-dislike
+  .ng-leave
+    transform: translateX(0px) rotate(0deg)
+
+    .ng-leave-active
+      transform: translateX(100%) rotate(60deg)
