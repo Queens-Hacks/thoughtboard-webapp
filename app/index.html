@@ -24,7 +24,24 @@
 
     <form class='newForm'>
       <textarea name='newPost' placeholder='Say something!'></textarea>
-      <button class='submit'>Submit</button>
+      <!--<button class='submit'>Submit</button>-->
+      <script src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=test@merchant.com"
+          data-button="buynow"
+          data-name="Test"
+          data-quantity="1"
+          data-amount="0.00"
+          data-currency="CAD"
+          data-env="sandbox"
+      ></script>
+      <!--<script src="ext/paypal-button.min.js"
+          data-button="buynow"
+          data-name="Board Item"
+          data-amount="0"
+          data-quantity="1"
+          data-shipping="0"
+          data-tax="0"
+          data-env="sandbox"
+      ></script>-->
     </form>
 
     <!-- build:js js/all.js -->
