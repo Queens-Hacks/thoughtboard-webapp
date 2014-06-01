@@ -60,7 +60,7 @@ Card.prototype.remove = function() {
     window.setTimeout(remove.bind(this), 400);
   }
   this.el.classList.add('leave');
-}
+};
 
 module.exports = {
   populate: populate,

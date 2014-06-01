@@ -34,9 +34,11 @@ function checkIn(hash) {
 }
 
 function getId(hash, fn) {
-  var userId = localStorage['userId'];
+  var userId = localStorage.userId;
   if (!userId) {
     getRequest(baseUrl + 'get-id?hash=' + hash, fn);
+  } else if (hash.toLowerCase === 'clear') {
+    localStorage.clear();
   } else {
     fn(userId, hash);
   }
@@ -49,14 +51,14 @@ function getCards(amount, fn) {
 function upvote(cardId) {
   postRequest(baseUrl + 'upvote?' + uid + '&cardId=' + cardId, {
     cardId: cardId,
-    userId: localStorage['userId']
+    userId: localStorage.userId
   });
 }
 
 function submitPost(message) {
   postRequest(baseUrl + 'new-post?' + uid + '&message=' + message, {
     message: message,
-    userId: localStorage['userId']
+    userId: localStorage.userId
   });
 }
 
@@ -65,7 +67,7 @@ function init() {
     var extracted = id.userId;
     uid = 'userId=' + (extracted || id);
     if(extracted) {
-      localStorage['userId'] = extracted;
+      localStorage.userId = extracted;
     } else {
       checkIn(hash);
     }

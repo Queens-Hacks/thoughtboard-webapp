@@ -10,9 +10,9 @@ var hexList = [
   "#D3C084",
   "#CEEB94",
   "#C8E7D8"
-]
+];
 
 module.exports = {
   abort: abort,
   hexList: hexList
-}
+};
