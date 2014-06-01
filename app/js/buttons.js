@@ -23,13 +23,35 @@ function heart() {
   heartState = !heartState;
 }
 
+function toggleTop() {
+  if (score.get() >= 5) {
+    DOM.newForm.classList.toggle('show');
+    DOM.plus.classList.toggle('fa-plus-circle');
+    DOM.plus.classList.toggle('fa-arrow-circle-up');
+  } else {
+    console.log('Insufficient funds');
+  }
+}
+
+function submit(e) {
+  var textarea;
+  e.preventDefault();
+
+  if (score.get() >= 5) {
+    textarea = DOM.newForm.newPost;
+    server.submitPost(textarea.value);
+    textarea.value = '';
+  }
+}
+
 var heartState = false;
 
 DOM.heart.addEventListener('click', heart, true);
 DOM.next.addEventListener('click', next, true);
+DOM.topBar.addEventListener('click', toggleTop, true);
+DOM.newForm.addEventListener('submit', submit, true);
 
 module.exports = {
   next: next,
   heart: heart
 }
-
