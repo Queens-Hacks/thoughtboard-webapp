@@ -1,6 +1,5 @@
 var DOM = require('./DOM');
 var utils = require('./utils');
-var server = require('./server');
 
 function pushCard(message, id) {
   var cardList = DOM.cardList;
