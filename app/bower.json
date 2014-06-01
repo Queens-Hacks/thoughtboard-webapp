@@ -21,6 +21,7 @@
     "underscore": "~1.6.0",
     "modernizr": "~2.8.2",
     "transitionEnd": "~1.0.2",
-    "classList.js": "https://github.com/eligrey/classList.js.git"
+    "classList.js": "https://github.com/eligrey/classList.js.git",
+    "bourbon": "~4.0.2"
   }
 }
