@@ -39,7 +39,6 @@ function submit(e) {
   if (score.get() >= 5) {
     textarea = DOM.newForm.newPost;
     server.submitPost(textarea.value);
-    textarea.value = '';
   }
 }
 
