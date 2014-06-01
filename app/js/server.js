@@ -54,7 +54,7 @@ function upvote(cardId) {
 }
 
 function submitPost(message) {
-  postRequest(baseUrl + 'new-post?' + uid + 'message=' + message, {
+  postRequest(baseUrl + 'new-post?' + uid + '&message=' + message, {
     message: message,
     userId: localStorage['userId']
   });
