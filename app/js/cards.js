@@ -1,13 +1,19 @@
 var DOM = require('./DOM');
+var utils = require('./utils');
+var touch = require('./touch');
 
 function pushCard(message, id) {
   var cardList = DOM.cardList;
   var li = document.createElement('li');
   var vcent = document.createElement('div');
   var p = document.createElement('p');
+  var randColor = _.random(0, utils.hexList.length-1);
+  console.log(randColor);
 
   vcent.className = 'vcent';
   p.textContent = message;
+
+  li.style.backgroundColor = utils.hexList[randColor];
 
   li.appendChild(vcent);
   li.appendChild(p);
@@ -19,6 +25,7 @@ function shiftCard() {
   var activeCardsLength = activeCards.length;
   if (activeCardsLength) {
     var card = activeCards.shift(), id = card.id;
+    touch.reset();
     card.remove();
     // lazyload new cards
     if (activeCardsLength < 5) {

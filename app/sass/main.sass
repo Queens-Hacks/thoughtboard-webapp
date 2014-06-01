@@ -7,6 +7,12 @@ $default-text: #333
 $card-color: #FFF
 $default-font: 'Montserrat'
 
+$purple: #5E5269
+$pink: #E57871
+$dirt: #D3C084
+$lime: #CEEB94
+$lblue: #C8E7D8
+
 /* Helpers */
 .vcent
   display: inline-block
@@ -19,16 +25,22 @@ body
   overflow-x: hidden
   font: bold 2.4em $default-font
   color: $default-text
-  background-color: $default-background
-
-.newMessage, .score
-  color: $default-text
-  background-color: $default-background
+  background: $default-background url(http://subtlepatterns.com/patterns/cork_1.png) repeat
 
 button
   border: 0
   outline: 0
   cursor: pointer
+
+i
+  color: #fff
+
+/* Type */
+
+.newMessage, .score
+  color: $default-text
+  background-color: $default-background
+  font: normal 3em $default-font
 
 .newMessage
   margin: 0 auto
@@ -36,7 +48,12 @@ button
   font-weight: 400
 
 .cardList
-  font: bold 1em $default-font
+  font: bold 3em $default-font
+  color: $purple
+  text-shadow: -2px -2px #fff
+
+.next
+  font: bold 1.2em $default-font
 
 /* Content */
 
@@ -44,11 +61,12 @@ button
   position: absolute
   width: 100%
   top: 0
-  background-color: #666
+  background-color: $purple
   padding: 0.2em
   color: #FFF
+  cursor: pointer
 
-  span
+  .add
     right: 0
 
 .score
@@ -64,10 +82,12 @@ button
     height: 60%
     width: 80%
     box-sizing: border-box
+    border-radius: 0.2em
     opacity: 1
     text-align: center
-    background-color: $card-color
+
     transition: transform 0.2s ease-out, opacity 0.2s
+    box-shadow: 0 10px 0px -4px rgba($purple, 0.1)
 
     &.leave
       opacity: 0
@@ -85,16 +105,27 @@ button
   width: 100px
   margin: -50px
   border-radius: 50px
+  background: lighten($pink, 10%)
+
+  transition: transform 0.3s ease
+
+  i
+    color: #fff
 
   &.active
-    background-color: red
+    background-color: darken($pink, 10%)
+    transform: scale(1.1)
 
 .next
   position: absolute
   top: 50%
   right: 0
-  height: 48px
-  width: 8em
+  height: 4em
+  width: 5em
   margin-top: -24px
-  border-radius: 24px 0 0 24px
+
+  border-radius: 3em 0 0 3em
+
   text-transform: uppercase
+  background-color: $purple
+  color: #fff
