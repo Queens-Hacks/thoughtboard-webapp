@@ -3,9 +3,9 @@ var cards = require('./cards');
 var score = require('./score');
 
 function next() {
-  var id = cards.shift();
+  var cardId = cards.shift();
   if (heartState) {
-    // send id to server for upvote
+//    server.send('upvote', userId, cardId);
     DOM.heart.classList.remove('active');
     heartState = false;
   }

@@ -7,18 +7,33 @@ $default-text: #333
 $card-color: #FFF
 $default-font: 'Montserrat'
 
+/* Helpers */
+.vcent
+  display: inline-block
+  height: 100%
+  vertical-align: middle
+
 /* Global */
 
 body
+  overflow-x: hidden
+  font: bold 2.4em $default-font
   color: $default-text
   background-color: $default-background
 
-.newMessage,
-.score
-  font: bold 2.4em $default-font
+.newMessage, .score
+  color: $default-text
+  background-color: $default-background
+
+button
+  border: 0
+  outline: 0
+  cursor: pointer
+
+.newMessage
+  margin: 0 auto
   font-size: 2em
   font-weight: 400
-  margin: 0 auto
 
 .cardList
   font: bold 1em $default-font
@@ -36,52 +51,50 @@ body
   span
     right: 0
 
-.cardList
-  margin-top: 4em
-  .card
-    display: inline-block
-    padding: 1em
-    width: 80%
-    height: 60%
-    background-color: $card-color
-
 .score
   position: absolute
   bottom: 0
 
-/* TODO: Transitions */
-.animate-like.ng-leave, .animate-dislike.ng-leave, .animate-partial
-  transition: all linear 0.3s
-
-.animate-partial
-  .animate-like-partial
-    transform: translateX(10%) rotate(5deg)
-
-  .animate-dislike-partial
-    transform: translateX(-10%) rotate(-5deg)
-
-.animate-like
-  .ng-leave
-    transform: translateX(0px) rotate(0deg)
-    .ng-leave-active
-      transform: translateX(100%) rotate(60deg)
-
-.animate-dislike
-  .ng-leave
-    transform: translateX(0px) rotate(0deg)
-
-    .ng-leave-active
-      transform: translateX(100%) rotate(60deg)
-
 .cardList
   li
+    position: absolute
+    top: 20%
+    left: 10%
+    padding: 1em
+    height: 60%
+    width: 80%
+    box-sizing: border-box
     opacity: 1
-    transition: opacity .4s
+    text-align: center
+    background-color: $card-color
+    transition: transform 0.2s ease-out, opacity 0.2s
 
     &.leave
       opacity: 0
+      transform: translateX(-100%) rotate(-60deg)
+
+    p
+      display: inline-block
+      vertical-align: middle
 
 .heart
-  .active
-    height: 100px
-    width: 100px
+  position: absolute
+  top: 80%
+  left: 50%
+  height: 100px
+  width: 100px
+  margin: -50px
+  border-radius: 50px
+
+  &.active
+    background-color: red
+
+.next
+  position: absolute
+  top: 50%
+  right: 0
+  height: 48px
+  width: 8em
+  margin-top: -24px
+  border-radius: 24px 0 0 24px
+  text-transform: uppercase

@@ -1,21 +1,27 @@
 var DOM = require('./DOM');
 
 function pushCard(message, id) {
+  var cardList = DOM.cardList;
   var li = document.createElement('li');
+  var vcent = document.createElement('div');
   var p = document.createElement('p');
+
+  vcent.className = 'vcent';
   p.textContent = message;
+
+  li.appendChild(vcent);
   li.appendChild(p);
-  DOM.cardList.appendChild(li);
-  cardList.push(new Card(li, id));
+  cardList.insertBefore(li, cardList.firstChild);
+  activeCards.push(new Card(li, id));
 }
 
 function shiftCard() {
-  var cardListLength = cardList.length;
-  if (cardListLength) {
-    var card = cardList.shift(), id = card.id;
+  var activeCardsLength = activeCards.length;
+  if (activeCardsLength) {
+    var card = activeCards.shift(), id = card.id;
     card.remove();
     // lazyload new cards
-    if (cardListLength < 5) {
+    if (activeCardsLength < 5) {
       populate(10);
     }
     return id;
@@ -44,7 +50,7 @@ function populate(amount) {
 
 function remove(e) {
   var el = this.el;
-  if (e.target === el) {
+  if (!e || e.propertyName == 'transform' && e.target === el) {
     el.parentNode.removeChild(el);
   }
 }
@@ -54,7 +60,7 @@ function Card(el, id) {
   this.id = id;
 }
 
-var cardList = [];
+var activeCards = [];
 
 Card.prototype.remove = function() {
   var el = this.el;
