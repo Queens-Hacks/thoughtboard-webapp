@@ -2,7 +2,9 @@ Thoughtboard Mobile Controller
 =====================
 
 **Completed during Toronto's BattleHack 2014**
+
 **Cross-browser tested using [BrowserStack](http://www.browserstack.com/)**
+
 **Payments with [PayPal](https://www.paypal.com/)**
 
 ## Thoughtboard
