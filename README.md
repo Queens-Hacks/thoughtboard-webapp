@@ -12,3 +12,7 @@ Thoughtboard is a democratic billboard for sharing the pulse of a community. App
 
 ### Mobile Controller Module
 Allows users to vote on the thoughts of others, share thoughts of their own, and make payments using PayPal.
+
+### Display and API
+
+See [thoughtboard](https://github.com/Queens-Hacks/thoughtboard) for the main controller module.
